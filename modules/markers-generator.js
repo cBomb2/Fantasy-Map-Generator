@@ -611,6 +611,13 @@ window.Markers = (function () {
     notes.push({id, name, legend});
   }
 
+  function addOrbPice(id, cell) {
+    const orbSeed = `${seed}${cell}`;
+    const name = "Orb Pice";
+    const legend = `<div>Protected orb Pice. See <a href="https://cbomb2.github.io/orbPiceGeneration/?seed=${orbSeed}" target="_blank">Orb pice details</a></div><iframe style="pointer-events: none;" src="https://cbomb2.github.io/orbPiceGeneration/?seed=${orbSeed}" sandbox="allow-scripts allow-same-origin"></iframe>`;
+    notes.push({id, name, legend});
+  }
+  
   function listLakeMonsters({features}) {
     return features
       .filter(feature => feature.type === "lake" && feature.group === "freshwater" && !occupied[feature.firstCell])
