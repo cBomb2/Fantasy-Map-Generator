@@ -32,6 +32,7 @@ window.Markers = (function () {
       {type: "waterfalls", icon: "⟱", dy: 54, px: 16, min: 1, each: 5, multiplier: 1, list: listWaterfalls, add: addWaterfall},
       {type: "battlefields", icon: "⚔️", dy: 52, min: 50, each: 700, multiplier: 1, list: listBattlefields, add: addBattlefield},
       {type: "dungeons", icon: "🗝️", dy: 51, px: 13, min: 30, each: 200, multiplier: 1, list: listDungeons, add: addDungeon},
+      {type: "orbPices", icon: "🔮", dy: 51, 13, min: 50, each: 200, multiplier: 1, list: listOrbPices, add: addOrbPice},
       {type: "lake-monsters", icon: "🐉", dy: 48, min: 2, each: 10, multiplier: 1, list: listLakeMonsters, add: addLakeMonster},
       {type: "sea-monsters", icon: "🦑", min: 50, each: 700, multiplier: 1, list: listSeaMonsters, add: addSeaMonster},
       {type: "hill-monsters", icon: "👹", dy: 54, px: 13, min: 30, each: 600, multiplier: 1, list: listHillMonsters, add: addHillMonster},
@@ -611,6 +612,10 @@ window.Markers = (function () {
     notes.push({id, name, legend});
   }
 
+  function listOrbPices({cells}){
+    return cells.i.filter(i => !occupied[i] && cells.pop[i] && cells.pop[i] < 3);
+  }
+  
   function addOrbPice(id, cell) {
     const orbSeed = `${seed}${cell}`;
     const name = "Orb Pice";
